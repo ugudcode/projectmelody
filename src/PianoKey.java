@@ -17,6 +17,7 @@ public class PianoKey extends JPanel {
         return noteNumber;
     }
 
+
     public void setPressed(boolean pressed) {
         isPressed = pressed;
     }
@@ -71,28 +72,8 @@ public class PianoKey extends JPanel {
             g2.fillRoundRect(1, 1, getWidth() - 2, getHeight() / 2, arc, arc);
         }
 
-        // Draw note label with modern font
-        if (!isBlackKey) {
-            g2.setColor(new Color(80, 80, 85));
-            g2.setFont(new Font("Segoe UI", Font.BOLD, 11));
-            String noteName = getNoteNameFromNumber(noteNumber);
-            FontMetrics fm = g2.getFontMetrics();
-            int noteWidth = fm.stringWidth(noteName);
-            g2.drawString(noteName, (getWidth() - noteWidth) / 2, getHeight() - 10);
-        } else {
-            g2.setColor(new Color(255, 255, 255, 40));
-            g2.setFont(new Font("Segoe UI", Font.BOLD, 9));
-            String noteName = getNoteNameFromNumber(noteNumber);
-            FontMetrics fm = g2.getFontMetrics();
-            int noteWidth = fm.stringWidth(noteName);
-            g2.drawString(noteName, (getWidth() - noteWidth) / 2, getHeight() - 15);
-        }
+
     }
 
-    private String getNoteNameFromNumber(int noteNumber) {
-        String[] noteNames = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
-        int octave = (noteNumber - 12) / 12;
-        int note = noteNumber % 12;
-        return noteNames[note] + octave;
-    }
+
 }
